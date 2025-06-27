@@ -5,7 +5,7 @@ from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 
 #app configuration
-app = Flask(__name__)
+app = Flask(__name__, static_folder='static', template_folder='templates')
 Scss(app)
 
 #database configuration
@@ -29,6 +29,7 @@ with app.app_context():
 # Home page route
 @app.route('/', methods=['POST', 'GET'])
 def index():
+    search_query = request.args.get('search', '')
     if request.method == 'POST':
         name = request.form['name']
         number = request.form['number']
@@ -41,8 +42,11 @@ def index():
             print(f"Error:{e}")
             return f"Error: {e}"
     else:
-        contacts = Contact.query.order_by(Contact.created_at).all()
-        return render_template('index.html', contacts=contacts)
+        if search_query:
+            contacts = Contact.query.filter(Contact.name.ilike(f"%{search_query}%")).order_by(Contact.created_at).all()
+        else:
+            contacts = Contact.query.order_by(Contact.created_at).all()
+        return render_template('index.html', contacts=contacts, search_query=search_query)
 
 # Delete contact
 @app.route('/delete/<int:id>', methods=['GET'])
