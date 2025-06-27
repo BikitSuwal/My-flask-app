@@ -11,6 +11,10 @@
 {% block body %}
 <div class = "Content">
     <h1>Contact Manager</h1>
+    <form action="/" method="get" style="margin-bottom: 20px;">
+        <input type="text" name="search" placeholder="Search by name" value="{{ search_query|default('') }}">
+        <input type="submit" value="Search" class="add">
+    </form>
     {% if contacts | length < 1 %}
     <h3>No contacts to show</h3>
     {% else %}
