@@ -1,0 +1,147 @@
+// variables
+
+$primary-color: #3498db;
+$primary-hover-color: darken($primary-color, 10%);
+$success-color: #2ecc71;
+$success-hover-color: darken($success-color, 10%);
+$title-color: #2c3e50;
+$bg-color: wheat;
+
+body{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin : 0;
+    padding: 0;
+    background-color: $bg-color;
+
+}
+
+.Content{
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    h1 {
+        color: $primary-hover-color;
+        font-size: 2.2rem;
+        margin-bottom: 20px;
+        letter-spacing: 1px;
+    }
+    h3 {
+        color: $success-color;
+        font-weight: 500;
+        margin-bottom: 20px;
+    }
+    h4{
+        color: $success-hover-color;
+    }
+    table {
+        width: 100%;
+        margin-top: 20px;
+        border-collapse: collapse;
+        box-shadow: 0 2px 8px rgba(44, 62, 80, 0.08);
+        background: #fafafa;
+        th, td {
+            padding: 12px 10px;
+            border: 2px solid #2c3e50;
+        }
+        th {
+            background-color: $title-color;
+            color: #fff;
+            font-size: 1.1rem;
+        }
+        tr {
+            transition: background-color 0.2s, box-shadow 0.2s;
+            &:hover {
+                background-color: #f2f2f2;
+                box-shadow: 0 2px 8px rgba(44, 62, 80, 0.10);
+            }
+        }
+    }
+    a{
+        display:    inline-block;
+        padding:    10px 20px;
+        margin: 3px;
+        border-radius: 20px;
+        background-color: $bg-color;
+        text-decoration: none;
+        transition: background-color 0.3s ease;
+
+        &:hover{
+            background-color: $success-hover-color;
+            color: white;
+        }
+    }
+
+    input {
+        padding: 10px;
+        margin: 5px;
+        cursor: pointer;
+        background-color: white;
+        color: rgb(36, 33, 33);
+        border: solid 2px #2c3e50;
+        border-radius: 20px;
+        transition: background-color 0.3s, box-shadow 0.3s;
+        width: 20%;
+        box-sizing: border-box;
+        outline: none;
+
+        &:hover {
+            background-color: $success-hover-color;
+            color: white;
+        }
+        &:focus {
+            box-shadow: 0 0 5px $primary-color;
+            border-color: $primary-color;
+        }
+    }
+
+    .add {
+        display: inline-block;
+        padding: 10px 20px;
+        margin: 3px;
+        border-radius: 20px;
+        cursor: pointer;
+        background-color: wheat;
+        color: rgb(224, 49, 49);
+        text-decoration: none;
+        transition: background-color 0.3s, color 0.3s;
+        border: none;
+        font-weight: bold;
+        font-size: 1rem;
+
+        &:hover {
+            background-color: $primary-hover-color;
+            color: whitesmoke;
+        }
+    }
+
+    form {
+        background: #f8f8f8;
+        padding: 18px 0 10px 0;
+        border-radius: 12px;
+        margin-top: 30px;
+        box-shadow: 0 1px 4px rgba(44, 62, 80, 0.07);
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+    }
+
+    // Responsive design
+    @media (max-width: 600px) {
+        .Content {
+            padding: 10px;
+            max-width: 98vw;
+        }
+        table, th, td {
+            font-size: 0.95rem;
+        }
+        input, .add, a {
+            width: 90% !important;
+            font-size: 1rem;
+        }
+    }
+}

@@ -1,0 +1,129 @@
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: wheat;
+}
+
+.Content {
+  max-width: 800px;
+  margin: 50px auto;
+  padding: 20px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+.Content h1 {
+  color: #217dbb;
+  font-size: 2.2rem;
+  margin-bottom: 20px;
+  letter-spacing: 1px;
+}
+.Content h3 {
+  color: #2ecc71;
+  font-weight: 500;
+  margin-bottom: 20px;
+}
+.Content h4 {
+  color: #25a25a;
+}
+.Content table {
+  width: 100%;
+  margin-top: 20px;
+  border-collapse: collapse;
+  box-shadow: 0 2px 8px rgba(44, 62, 80, 0.08);
+  background: #fafafa;
+}
+.Content table th, .Content table td {
+  padding: 12px 10px;
+  border: 2px solid #2c3e50;
+}
+.Content table th {
+  background-color: #2c3e50;
+  color: #fff;
+  font-size: 1.1rem;
+}
+.Content table tr {
+  transition: background-color 0.2s, box-shadow 0.2s;
+}
+.Content table tr:hover {
+  background-color: #f2f2f2;
+  box-shadow: 0 2px 8px rgba(44, 62, 80, 0.1);
+}
+.Content a {
+  display: inline-block;
+  padding: 10px 20px;
+  margin: 3px;
+  border-radius: 20px;
+  background-color: wheat;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+.Content a:hover {
+  background-color: #25a25a;
+  color: white;
+}
+.Content input {
+  padding: 10px;
+  margin: 5px;
+  cursor: pointer;
+  background-color: white;
+  color: rgb(36, 33, 33);
+  border: solid 2px #2c3e50;
+  border-radius: 20px;
+  transition: background-color 0.3s, box-shadow 0.3s;
+  width: 20%;
+  box-sizing: border-box;
+  outline: none;
+}
+.Content input:hover {
+  background-color: #25a25a;
+  color: white;
+}
+.Content input:focus {
+  box-shadow: 0 0 5px #3498db;
+  border-color: #3498db;
+}
+.Content .add {
+  display: inline-block;
+  padding: 10px 20px;
+  margin: 3px;
+  border-radius: 20px;
+  cursor: pointer;
+  background-color: wheat;
+  color: rgb(224, 49, 49);
+  text-decoration: none;
+  transition: background-color 0.3s, color 0.3s;
+  border: none;
+  font-weight: bold;
+  font-size: 1rem;
+}
+.Content .add:hover {
+  background-color: #217dbb;
+  color: whitesmoke;
+}
+.Content form {
+  background: #f8f8f8;
+  padding: 18px 0 10px 0;
+  border-radius: 12px;
+  margin-top: 30px;
+  box-shadow: 0 1px 4px rgba(44, 62, 80, 0.07);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+}
+@media (max-width: 600px) {
+  .Content .Content {
+    padding: 10px;
+    max-width: 98vw;
+  }
+  .Content table, .Content th, .Content td {
+    font-size: 0.95rem;
+  }
+  .Content input, .Content .add, .Content a {
+    width: 90% !important;
+    font-size: 1rem;
+  }
+}/*# sourceMappingURL=styles.css.map */

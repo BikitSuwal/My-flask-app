@@ -1,0 +1,76 @@
+#imports
+from flask import Flask, render_template, redirect, request
+from flask_scss import Scss
+from flask_sqlalchemy import SQLAlchemy
+from datetime import datetime
+
+#app configuration
+app = Flask(__name__)
+Scss(app)
+
+#database configuration
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+db = SQLAlchemy(app)
+
+#models
+class Contact(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(100), nullable=False)
+    number = db.Column(db.String(20), nullable=False)
+    created_at = db.Column(db.DateTime, default=datetime.utcnow)
+
+    def __repr__(self) -> str:
+        return f'<Contact {self.id}>'
+
+with app.app_context():
+    db.create_all()
+
+# Home page route
+@app.route('/', methods=['POST', 'GET'])
+def index():
+    if request.method == 'POST':
+        name = request.form['name']
+        number = request.form['number']
+        new_contact = Contact(name=name, number=number)
+        try:
+            db.session.add(new_contact)
+            db.session.commit()
+            return redirect('/')
+        except Exception as e:
+            print(f"Error:{e}")
+            return f"Error: {e}"
+    else:
+        contacts = Contact.query.order_by(Contact.created_at).all()
+        return render_template('index.html', contacts=contacts)
+
+# Delete contact
+@app.route('/delete/<int:id>', methods=['GET'])
+def delete(id: int):
+    contact = Contact.query.get_or_404(id)
+    try:
+        db.session.delete(contact)
+        db.session.commit()
+        return redirect('/')
+    except Exception as e:
+        print(f"Error:{e}")
+        return f"Error: {e}"
+
+# Update contact
+@app.route('/update/<int:id>', methods=['POST', 'GET'])
+def update(id: int):
+    contact = Contact.query.get_or_404(id)
+    if request.method == 'POST':
+        contact.name = request.form['name']
+        contact.number = request.form['number']
+        try:
+            db.session.commit()
+            return redirect('/')
+        except Exception as e:
+            print(f"Error:{e}")
+            return f"Error: {e}"
+    else:
+        return render_template('update.html', contact=contact)
+
+if __name__ == '__main__':
+    app.run(debug=True)
