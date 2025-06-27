@@ -1,0 +1,61 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Flask cache
+instance/
+*.db
+*.sqlite3
+
+# Virtual environment
+venv/
+ENV/
+env/
+.venv/
+
+# Environment variables
+.env
+.env.*
+
+# VS Code settings
+.vscode/
+
+# macOS & Linux
+.DS_Store
+Thumbs.db
+
+# PyCharm
+.idea/
+
+# Compiled SCSS (if any)
+*.css
+*.css.map
+
+# Logs
+*.log
+
+# Pytest / testing
+htmlcov/
+.tox/
+.coverage
+coverage.xml
+.pytest_cache/
+
+# Python egg files
+*.egg
+*.egg-info/
+dist/
+build/
+
+# Pip dependency logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Jupyter Notebooks
+.ipynb_checkpoints/
+
+# System-specific
+*.bak
+*.swp
+*~
