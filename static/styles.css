@@ -114,6 +114,137 @@ body {
   justify-content: center;
   gap: 10px;
 }
+.Content .alert-container {
+  max-width: 800px;
+  margin: 20px auto 0 auto;
+  padding: 0 20px;
+  position: fixed;
+  top: 30px;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.Content .alert {
+  padding: 16px 28px;
+  border-radius: 10px;
+  margin-bottom: 15px;
+  font-weight: 500;
+  font-size: 1.1rem;
+  box-shadow: 0 4px 16px rgba(44, 62, 80, 0.18);
+  text-align: center;
+  min-width: 300px;
+  max-width: 90vw;
+  position: relative;
+  background: #fff;
+  border: 2px solid #e99;
+  animation: fadeInScale 0.3s;
+}
+.Content .alert-danger {
+  background-color: #ffdddd;
+  color: #a94442;
+  border: 2px solid #e99;
+}
+.Content .alert-success {
+  background-color: #ddffdd;
+  color: #3c763d;
+  border: 2px solid #9e9;
+}
+.Content .alert .close-btn {
+  position: absolute;
+  top: 8px;
+  right: 14px;
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  color: #888;
+  cursor: pointer;
+}
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+ .popup-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+  animation: fadeIn 0.2s;
+}
+.popup-content {
+  background: #fff;
+  padding: 32px 28px 20px 28px;
+  border-radius: 14px;
+  box-shadow: 0 8px 32px rgba(44, 62, 80, 0.18);
+  min-width: 320px;
+  max-width: 90vw;
+  text-align: center;
+  position: relative;
+  animation: scaleIn 0.2s;
+}
+.Content .popup-message {
+  font-size: 1.1rem;
+  margin-bottom: 18px;
+  font-weight: 500;
+}
+.Content .popup-danger {
+  color: #a94442;
+  background: #ffdddd;
+  border: 1.5px solid #e99;
+  border-radius: 8px;
+  padding: 12px 10px;
+}
+.Content .popup-success {
+  color: #3c763d;
+  background: #ddffdd;
+  border: 1.5px solid #9e9;
+  border-radius: 8px;
+  padding: 12px 10px;
+}
+.Content .popup-close {
+  background: #217dbb;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 8px 18px;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-top: 8px;
+  transition: background 0.2s;
+}
+.Content .popup-close:hover {
+  background: #155a8a;
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes scaleIn {
+  from {
+    transform: scale(0.8);
+  }
+  to {
+    transform: scale(1);
+  }
+}
 @media (max-width: 600px) {
   .Content .Content {
     padding: 10px;

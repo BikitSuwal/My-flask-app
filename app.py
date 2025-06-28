@@ -34,6 +34,11 @@ def index():
     if request.method == 'POST':
         name = request.form['name']
         number = request.form['number']
+        # Check for duplicate
+        duplicate = Contact.query.filter_by(name=name, number=number).first()
+        if duplicate:
+            flash("A contact with this name and number already exists.", 'danger')
+            return redirect('/')
         new_contact = Contact(name=name, number=number)
         try:
             db.session.add(new_contact)
