@@ -130,6 +130,31 @@ body{
         gap: 10px;
     }
 
+    .alert-container {
+      max-width: 800px;
+      margin: 20px auto 0 auto;
+      padding: 0 20px;
+    }
+    .alert {
+      padding: 12px 20px;
+      border-radius: 8px;
+      margin-bottom: 15px;
+      font-weight: 500;
+      font-size: 1.05rem;
+      box-shadow: 0 2px 8px rgba(44, 62, 80, 0.08);
+      text-align: center;
+    }
+    .alert-danger {
+      background-color: #ffdddd;
+      color: #a94442;
+      border: 1px solid #e99;
+    }
+    .alert-success {
+      background-color: #ddffdd;
+      color: #3c763d;
+      border: 1px solid #9e9;
+    }
+
     // Responsive design
     @media (max-width: 600px) {
         .Content {

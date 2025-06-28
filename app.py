@@ -1,11 +1,12 @@
 #imports
-from flask import Flask, render_template, redirect, request
+from flask import Flask, render_template, redirect, request, flash
 from flask_scss import Scss
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 
 #app configuration
 app = Flask(__name__, static_folder='static', template_folder='templates')
+app.secret_key = 'your_secret_key_here'  # Needed for flashing messages
 Scss(app)
 
 #database configuration
@@ -39,8 +40,8 @@ def index():
             db.session.commit()
             return redirect('/')
         except Exception as e:
-            print(f"Error:{e}")
-            return f"Error: {e}"
+            flash(f"Error adding contact: {e}", 'danger')
+            return redirect('/')
     else:
         if search_query:
             contacts = Contact.query.filter(Contact.name.ilike(f"%{search_query}%")).order_by(Contact.name.asc()).all()
@@ -57,8 +58,8 @@ def delete(id: int):
         db.session.commit()
         return redirect('/')
     except Exception as e:
-        print(f"Error:{e}")
-        return f"Error: {e}"
+        flash(f"Error deleting contact: {e}", 'danger')
+        return redirect('/')
 
 # Update contact
 @app.route('/update/<int:id>', methods=['POST', 'GET'])
@@ -71,8 +72,8 @@ def update(id: int):
             db.session.commit()
             return redirect('/')
         except Exception as e:
-            print(f"Error:{e}")
-            return f"Error: {e}"
+            flash(f"Error updating contact: {e}", 'danger')
+            return redirect(f'/update/{id}')
     else:
         return render_template('update.html', contact=contact)
 
