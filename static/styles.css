@@ -196,26 +196,26 @@ body {
   position: relative;
   animation: scaleIn 0.2s;
 }
-.Content .popup-message {
+.popup-message {
   font-size: 1.1rem;
   margin-bottom: 18px;
   font-weight: 500;
 }
-.Content .popup-danger {
+.popup-danger {
   color: #a94442;
   background: #ffdddd;
   border: 1.5px solid #e99;
   border-radius: 8px;
   padding: 12px 10px;
 }
-.Content .popup-success {
+.popup-success {
   color: #3c763d;
   background: #ddffdd;
   border: 1.5px solid #9e9;
   border-radius: 8px;
   padding: 12px 10px;
 }
-.Content .popup-close {
+.popup-close {
   background: #217dbb;
   color: #fff;
   border: none;
@@ -226,7 +226,7 @@ body {
   margin-top: 8px;
   transition: background 0.2s;
 }
-.Content .popup-close:hover {
+.popup-close:hover {
   background: #155a8a;
 }
 @keyframes fadeIn {
