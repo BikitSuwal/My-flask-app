@@ -43,9 +43,9 @@ def index():
             return f"Error: {e}"
     else:
         if search_query:
-            contacts = Contact.query.filter(Contact.name.ilike(f"%{search_query}%")).order_by(Contact.created_at).all()
+            contacts = Contact.query.filter(Contact.name.ilike(f"%{search_query}%")).order_by(Contact.name.asc()).all()
         else:
-            contacts = Contact.query.order_by(Contact.created_at).all()
+            contacts = Contact.query.order_by(Contact.name.asc()).all()
         return render_template('index.html', contacts=contacts, search_query=search_query)
 
 # Delete contact
