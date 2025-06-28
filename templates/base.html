@@ -9,13 +9,23 @@
 <body>
     {% with messages = get_flashed_messages(with_categories=true) %}
       {% if messages %}
-        <div class="alert-container">
-          {% for category, message in messages %}
-            <div class="alert alert-{{ category }}">{{ message }}</div>
-          {% endfor %}
+        <div id="popup-modal" class="popup-modal" style="display:block;">
+          <div class="popup-content">
+            {% for category, message in messages %}
+              <div class="popup-message popup-{{ category }}">{{ message }}</div>
+            {% endfor %}
+            <button class="popup-close" onclick="document.getElementById('popup-modal').style.display='none';">&times; Close</button>
+          </div>
         </div>
+        <script>
+          setTimeout(function() {
+            var modal = document.getElementById('popup-modal');
+            if(modal) modal.style.display = 'none';
+          }, 4000);
+        </script>
       {% endif %}
     {% endwith %}
+    {# Main content block #}
     {% block body %}{% endblock %}
 </body> 
 </html>
