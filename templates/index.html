@@ -14,6 +14,7 @@
     <form action="/" method="get" style="margin-bottom: 20px;">
         <input type="text" name="search" placeholder="Search by name" value="{{ search_query|default('') }}">
         <input type="submit" value="Search" class="add">
+        <a href="{{ url_for('export_contacts') }}" class="add" style="margin-left: 10px;">Download CSV</a>
     </form>
     {% if contacts | length < 1 %}
     <h3>No contacts to show</h3>
