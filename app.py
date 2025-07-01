@@ -4,6 +4,7 @@ import csv
 from flask_scss import Scss
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
+import io
 
 #app configuration
 app = Flask(__name__, static_folder='static', template_folder='templates')
@@ -87,16 +88,13 @@ def update(id: int):
 @app.route('/export', methods=['GET'])
 def export_contacts():
     contacts = Contact.query.order_by(Contact.name.asc()).all()
-    def generate():
-        data = [['ID', 'Name', 'Number', 'Created At']]
-        for c in contacts:
-            data.append([c.id, c.name, c.number, c.created_at.strftime('%Y-%m-%d %H:%M:%S')])
-        output = []
-        writer = csv.writer(output)
-        for row in data:
-            writer.writerow(row)
-        return '\r\n'.join([','.join(map(str, row)) for row in data])
-    csv_data = generate()
+    output = io.StringIO()
+    writer = csv.writer(output)
+    writer.writerow(['ID', 'Name', 'Number', 'Created At'])
+    for c in contacts:
+        writer.writerow([c.id, c.name, c.number, c.created_at.strftime('%Y-%m-%d %H:%M:%S')])
+    csv_data = output.getvalue()
+    output.close()
     return Response(
         csv_data,
         mimetype='text/csv',
