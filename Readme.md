@@ -88,13 +88,8 @@ Visit `http://127.0.0.1:5000/` in your browser.
 ---
 
 ## 🧩 Future Improvements
-
-* 🔤 Alphabetical sorting by name
-* 🧪 Unit tests for core functionality
 * 📤 Export contacts to CSV
-* ❗ Confirmation prompts before deletion
 * 🏷️ Contact categories (e.g., Work, Family, Friends)
-* ⚠️ Duplicate contact detection
 * 🌐 API support for external integration
 
 ---
