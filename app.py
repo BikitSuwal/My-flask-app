@@ -1,5 +1,6 @@
 #imports
-from flask import Flask, render_template, redirect, request, flash
+from flask import Flask, render_template, redirect, request, flash, Response
+import csv
 from flask_scss import Scss
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
@@ -60,6 +61,7 @@ def delete(id: int):
     contact = Contact.query.get_or_404(id)
     try:
         db.session.delete(contact)
+        
         db.session.commit()
         return redirect('/')
     except Exception as e:
@@ -81,6 +83,27 @@ def update(id: int):
             return redirect(f'/update/{id}')
     else:
         return render_template('update.html', contact=contact)
+
+@app.route('/export', methods=['GET'])
+def export_contacts():
+    contacts = Contact.query.order_by(Contact.name.asc()).all()
+    def generate():
+        data = [['ID', 'Name', 'Number', 'Created At']]
+        for c in contacts:
+            data.append([c.id, c.name, c.number, c.created_at.strftime('%Y-%m-%d %H:%M:%S')])
+        output = []
+        writer = csv.writer(output)
+        for row in data:
+            writer.writerow(row)
+        return '\r\n'.join([','.join(map(str, row)) for row in data])
+    csv_data = generate()
+    return Response(
+        csv_data,
+        mimetype='text/csv',
+        headers={
+            'Content-Disposition': 'attachment; filename=contacts.csv'
+        }
+    )
 
 if __name__ == '__main__':
     app.run(debug=True)
