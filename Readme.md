@@ -30,6 +30,7 @@ contact-manager/
 │   └── update.html         # Contact update form
 ├── static/
 │   └── styles.scss         # SCSS for styling
+├── test_app.py             # Unit tests for testing the app for better durability and bug free
 ├── README.md               # This file
 
 ````
