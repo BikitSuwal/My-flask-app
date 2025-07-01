@@ -11,10 +11,10 @@
 {% block body %}
 <div class = "Content">
     <h1>Contact Manager</h1>
-    <form action="/" method="get" style="margin-bottom: 20px;">
+    <form action="/" method="get" style="margin-bottom: 20px; display: flex; align-items: center; gap: 10px;">
         <input type="text" name="search" placeholder="Search by name" value="{{ search_query|default('') }}">
         <input type="submit" value="Search" class="add">
-        <a href="{{ url_for('export_contacts') }}" class="add" style="margin-left: 10px;">Download CSV</a>
+        <a href="{{ url_for('export_contacts') }}" class="add" style="margin-left: 0;">Download CSV</a>
     </form>
     {% if contacts | length < 1 %}
     <h3>No contacts to show</h3>
@@ -43,7 +43,6 @@
         <input type="text" name="number" id="number" placeholder="Number" required>
         <input type="submit" value="Add Contact" class="add">
     </form>
-    <a href="{{ url_for('export_contacts') }}" class="add" style="margin-left: 10px;">Download CSV</a>
 </div>
 <script>
 function confirmDelete(event) {
