@@ -10,9 +10,10 @@ A lightweight and responsive **Flask-based Contact Manager** that allows users t
 - 🔍 Search contacts by name (case-insensitive)
 - 📝 Update existing contact details
 - 🗑️ Delete contacts with a single click
-- 🔠 Sort contacts by creation time (future support for alphabetical sorting)
+- 🔠 Sort contacts alphabetically
 - 🎨 Clean and responsive UI using SCSS
 - 🗃️ Data persistence using SQLite
+- 🧪 Automated test for testing the app
 
 ---
 
