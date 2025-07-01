@@ -172,7 +172,8 @@ body {
     transform: scale(1);
   }
 }
- .popup-modal {
+
+.popup-modal {
   position: fixed;
   top: 0;
   left: 0;
@@ -185,6 +186,7 @@ body {
   z-index: 2000;
   animation: fadeIn 0.2s;
 }
+
 .popup-content {
   background: #fff;
   padding: 32px 28px 20px 28px;
@@ -196,11 +198,13 @@ body {
   position: relative;
   animation: scaleIn 0.2s;
 }
+
 .popup-message {
   font-size: 1.1rem;
   margin-bottom: 18px;
   font-weight: 500;
 }
+
 .popup-danger {
   color: #a94442;
   background: #ffdddd;
@@ -208,6 +212,7 @@ body {
   border-radius: 8px;
   padding: 12px 10px;
 }
+
 .popup-success {
   color: #3c763d;
   background: #ddffdd;
@@ -215,6 +220,7 @@ body {
   border-radius: 8px;
   padding: 12px 10px;
 }
+
 .popup-close {
   background: #217dbb;
   color: #fff;
@@ -226,9 +232,11 @@ body {
   margin-top: 8px;
   transition: background 0.2s;
 }
+
 .popup-close:hover {
   background: #155a8a;
 }
+
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -246,14 +254,14 @@ body {
   }
 }
 @media (max-width: 600px) {
-  .Content .Content {
+  .Content {
     padding: 10px;
     max-width: 98vw;
   }
-  .Content table, .Content th, .Content td {
+  table, th, td {
     font-size: 0.95rem;
   }
-  .Content input, .Content .add, .Content a {
+  input, .add, a {
     width: 90% !important;
     font-size: 1rem;
   }
