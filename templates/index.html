@@ -9,41 +9,61 @@
 
 
 {% block body %}
-<div class = "Content">
+<div class="Content">
     <h1>Contact Manager</h1>
-    <form action="/" method="get" style="margin-bottom: 20px; display: flex; align-items: center; gap: 10px;">
-        <input type="text" name="search" placeholder="Search by name" value="{{ search_query|default('') }}">
-        <input type="submit" value="Search" class="add">
-        <a href="{{ url_for('export_contacts') }}" class="add" style="margin-left: 0;">Download CSV</a>
+    <form action="/" method="get" style="margin-bottom: 20px; display: flex; align-items: center; gap: 10px; flex-wrap: wrap;" aria-label="Search contacts">
+        <label for="search" class="visually-hidden">Search by name</label>
+        <input type="text" name="search" id="search" placeholder="Search by name" value="{{ search_query|default('') }}" aria-label="Search by name">
+        <button type="submit" class="add" aria-label="Search">Search</button>
+        <a href="{{ url_for('export_contacts') }}" class="add" style="margin-left: 0;" role="button" aria-label="Download contacts as CSV">Download CSV</a>
     </form>
     {% if contacts | length < 1 %}
     <h3>No contacts to show</h3>
     {% else %}
-<table>
-    <tr>
-        <th>Name</th>
-        <th>Number</th>
-        <th>Actions</th>    
-    </tr>
-    {% for contact in contacts %}
-    <tr>
-        <td>{{ contact.name }}</td>
-        <td>{{ contact.number }}</td>
-        <td>
-            <a href="{{ url_for('delete', id=contact.id) }}" class="delete-link" onclick="return confirmDelete(event);">Delete</a>
-            <br/>
-            <a href="{{ url_for('update', id=contact.id) }}">Edit</a>
-        </td>
-    </tr>
-    {% endfor %}
-</table>
+    <div style="overflow-x:auto;">
+    <table role="table" aria-label="Contacts list">
+        <thead>
+        <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Number</th>
+            <th scope="col" class="actions">Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for contact in contacts %}
+        <tr>
+            <td>{{ contact.name }}</td>
+            <td>{{ contact.number }}</td>
+            <td class="actions">
+                <a href="{{ url_for('delete', id=contact.id) }}" class="delete-link" onclick="return confirmDelete(event);" aria-label="Delete {{ contact.name }}" tabindex="0">Delete</a>
+                <a href="{{ url_for('update', id=contact.id) }}" aria-label="Edit {{ contact.name }}" tabindex="0">Edit</a>
+            </td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    </div>
     {% endif %}
-    <form action = "/" method = "POST">
-        <input type="text" name="name" id="name" placeholder="Name" required>
-        <input type="text" name="number" id="number" placeholder="Number" required>
-        <input type="submit" value="Add Contact" class="add">
+    <form action="/" method="POST" aria-label="Add contact" style="flex-wrap: wrap;">
+        <label for="name" class="visually-hidden">Name</label>
+        <input type="text" name="name" id="name" placeholder="Name" required aria-label="Name">
+        <label for="number" class="visually-hidden">Number</label>
+        <input type="text" name="number" id="number" placeholder="Number" required aria-label="Number">
+        <button type="submit" class="add" aria-label="Add Contact">Add Contact</button>
     </form>
 </div>
+<style>
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  border: 0;
+}
+</style>
 <script>
 function confirmDelete(event) {
     if (!confirm('Are you sure you want to delete this contact?')) {

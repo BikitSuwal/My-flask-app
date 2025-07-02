@@ -39,18 +39,29 @@ body{
     }
     table {
         width: 100%;
-        margin-top: 20px;
-        border-collapse: collapse;
-        box-shadow: 0 2px 8px rgba(44, 62, 80, 0.08);
+        min-width: 400px;
+        border-collapse: separate;
+        border-spacing: 0;
         background: #fafafa;
+        box-shadow: 0 2px 8px rgba(44, 62, 80, 0.08);
+        margin-top: 20px;
         th, td {
-            padding: 12px 10px;
-            border: 2px solid #2c3e50;
+            padding: 16px 14px;
+            border-bottom: 1.5px solid #e0e0e0;
+            border-right: 1.5px solid #e0e0e0;
+            text-align: left;
         }
         th {
             background-color: $title-color;
             color: #fff;
-            font-size: 1.1rem;
+            font-size: 1.15rem;
+            letter-spacing: 0.5px;
+        }
+        tr:last-child td {
+            border-bottom: none;
+        }
+        tr td:last-child, tr th:last-child {
+            border-right: none;
         }
         tr {
             transition: background-color 0.2s, box-shadow 0.2s;
@@ -58,6 +69,16 @@ body{
                 background-color: #f2f2f2;
                 box-shadow: 0 2px 8px rgba(44, 62, 80, 0.10);
             }
+        }
+        th.actions, td.actions {
+            text-align: center;
+        }
+        td.actions {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
         }
     }
     a{
@@ -128,6 +149,8 @@ body{
         flex-wrap: wrap;
         justify-content: center;
         gap: 10px;
+        width: 100%;
+        max-width: 100vw;
     }
 
     .alert-container {
@@ -250,17 +273,62 @@ body{
     }
 
     // Responsive design
-    @media (max-width: 600px) {
+    @media (max-width: 900px) {
         .Content {
-            padding: 10px;
+            padding: 12px;
             max-width: 98vw;
         }
         table, th, td {
-            font-size: 0.95rem;
+            font-size: 1rem;
+            padding: 12px 8px;
+        }
+        table {
+            min-width: 320px;
         }
         input, .add, a {
-            width: 90% !important;
             font-size: 1rem;
+        }
+        form[aria-label="Search contacts"] {
+            flex-direction: row;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+    }
+    @media (max-width: 600px) {
+        .Content {
+            padding: 8px;
+            max-width: 100vw;
+        }
+        table, th, td {
+            font-size: 0.95rem;
+            padding: 10px 6px;
+        }
+        table {
+            display: block;
+            overflow-x: auto;
+            min-width: unset;
+        }
+        input, .add, a {
+            width: 100% !important;
+            font-size: 1rem;
+        }
+        form[aria-label="Search contacts"] {
+            flex-direction: column;
+            align-items: stretch;
+            gap: 8px;
+        }
+        .add, button.add {
+            width: 100%;
+            margin: 0 0 8px 0;
+        }
+        .alert, .alert-container {
+            min-width: unset;
+            max-width: 98vw;
+        }
+        .popup-content {
+            min-width: unset;
+            max-width: 98vw;
+            padding: 18px 8px 12px 8px;
         }
     }
 
